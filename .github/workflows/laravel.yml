@@ -1,0 +1,94 @@
+name: Laravel PSR12 Barebone CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  laravel-tests:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: laravel_test
+          POSTGRES_USER: laravel
+          POSTGRES_PASSWORD: password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.4'
+        extensions: mbstring, pdo, pdo_pgsql, intl
+        coverage: xdebug
+    
+    - name: Copy .env
+      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+    
+    - name: Install Dependencies
+      run: |
+        composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        npm install
+        npm run build
+    
+    - name: Generate key
+      run: php artisan key:generate
+    
+    - name: Run Migrations
+      env:
+        DB_CONNECTION: pgsql
+        DB_HOST: localhost
+        DB_PORT: 5432
+        DB_DATABASE: laravel_test
+        DB_USERNAME: laravel
+        DB_PASSWORD: password
+      run: php artisan migrate
+    
+    - name: Run PHPStan
+      run: ./vendor/bin/phpstan analyse
+    
+    - name: Run Pint (Code Style)
+      run: ./vendor/bin/pint --test
+    
+    - name: Run Tests
+      env:
+        DB_CONNECTION: pgsql
+        DB_HOST: localhost
+        DB_PORT: 5432
+        DB_DATABASE: laravel_test
+        DB_USERNAME: laravel
+        DB_PASSWORD: password
+      run: php artisan test
+
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Build Docker Image
+      run: docker build -t laravel-psr12-barebone .
+    
+    - name: Docker Compose Validation
+      run: docker-compose config -q
+
+# Optional deployment job - can be customized
+  # deploy:
+  #   needs: [laravel-tests, docker-build]
+  #   runs-on: ubuntu-latest
+  #   if: github.ref == 'refs/heads/main'
+  #   steps:
+  #     - name: Deploy to Production
+  #       run: echo "Add your deployment script here"

@@ -1,0 +1,52 @@
+# Laravel
+/vendor/
+/node_modules/
+/public/build/
+/public/hot/
+/public/storage/
+/storage/*.key
+/storage/logs/
+/storage/framework/cache/
+/storage/framework/sessions/
+/storage/framework/views/
+
+# Environment
+.env
+.env.backup
+.env.production
+
+# Composer
+composer.phar
+composer.lock
+
+# NPM / Yarn
+npm-debug.log
+yarn-error.log
+
+# Docker
+docker-compose.override.yml
+
+# IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Logs
+*.log
+
+# Backup files
+*.bak
+*.gho
+*.ori
+*.orig
+*.tmp

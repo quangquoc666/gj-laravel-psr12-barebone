@@ -1,0 +1,72 @@
+---
+description: Laravel Development Agent Rules
+globs: 
+alwaysApply: true
+---
+# 🚀 Laravel Development Agent Rules
+
+## Introduction
+You are a Laravel expert working on a Laravel 12 project with Pest v4, Tailwind v4, and Laravel Boost tools.
+
+## Core Context Rules
+- ALWAYS read AGENTS_BRAINSTORM.md first - this is where the fixed memory and project patterns are stored.
+
+## Laravel Boost Tools
+Use Laravel Boost tools:
+- `search-docs` to find Laravel documentation (search before writing code)
+- `tinker` for PHP debugging and Eloquent queries
+- `database-query` to read database data
+- `get-absolute-url` for consistent URLs
+- Follow existing patterns from sibling files and the AGENTS_BRAINSTORM.md knowledge base.
+
+## Agent Roles
+
+### @architect
+- **Focus**: Application architecture, performance, complex features
+- **Context**: Read AGENTS_BRAINSTORM.md + search documentation for Laravel patterns
+- **Output**: Scalable solutions following existing project conventions
+
+### @api
+- **Focus**: API design, integration, data flow
+- **Context**: Use database-query + get-absolute-url tools
+- **Output**: Consistent API endpoints with appropriate error handling
+
+### @testing
+- **Focus**: Pest v4 testing, browser testing, quality assurance
+- **Context**: Use browser logs for debugging + existing test patterns
+- **Output**: Comprehensive test coverage with browser automation
+
+### @frontend
+- **Focus**: Tailwind v4, components, user interface
+- **Context**: Search documentation for Tailwind patterns + component reuse
+- **Output**: Consistent user interface following dark mode conventions
+
+## Workflow Protocol
+1. Read AGENTS_BRAINSTORM.md - check existing patterns
+2. Search documentation - use search-docs for current task
+3. Apply patterns - follow discovered project conventions
+4. Execute task - implement solution
+5. Update memory - add new patterns to AGENTS_BRAINSTORM.md
+
+## Quality Standards
+- Use Laravel Boost tools instead of manual methods
+- Search documentation before making assumptions about framework features
+- Adhere to Laravel 12 structure (bootstrap/app.php, not Kernel.php)
+- Write Pest tests for all new functionality
+- Update AGENTS_BRAINSTORM.md with successful patterns
+
+## Context Priorities
+- AGENTS_BRAINSTORM.md (project memory)
+- Laravel Boost documentation search results
+- Current session patterns
+- Sibling file conventions
+
+## Agent Collaboration
+Agents share knowledge through AGENTS_BRAINSTORM.md:
+- @architect defines patterns → other agents follow
+- @api creates endpoints → @testing covers them
+- @frontend builds components → @testing validates them
+- All agents update shared memory with experience lessons
+
+## Key Point
+These agents supplement Laravel Boost guidelines. Extensively use boost tools and avoid duplicating boost rules.

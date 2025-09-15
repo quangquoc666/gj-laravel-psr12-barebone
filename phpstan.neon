@@ -1,0 +1,45 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/nesbot/carbon/extension.neon
+
+parameters:
+    # === LEVEL 6 - Sweet spot cho solo dev ===
+    level: 6
+    
+    # === PATHS ===
+    paths:
+        - app/
+        - config/
+        - database/migrations/
+        - database/seeders/
+        - routes/
+        - tests/
+    
+    # === EXCLUDE NOISE ===
+    excludePaths:
+        - bootstrap/cache/
+        - storage/
+        - vendor/
+        - node_modules/
+        - _ide_helper*.php
+    
+    # === LARAVEL SPECIFIC ===
+    checkModelProperties: true
+    checkOctaneCompatibility: false
+    
+    # === PERFORMANCE ===
+    parallel:
+        maximumNumberOfProcesses: 4
+    
+    # === CUSTOM RULES cho Solo Dev ===
+    ignoreErrors:
+        # Pest.php setup issues - common patterns
+        - '#Undefined variable: \$this#'
+        - '#Function [a-zA-Z_]+\(\) has no return type specified#'
+        
+        # Laravel HTTP testing
+        - '#Call to an undefined method PHPUnit\\Framework\\TestCase::[a-zA-Z]+\(\)#'
+        
+        # Chỉ thêm lại khi thực sự cần:
+        # - '#Call to an undefined static method Illuminate\\Support\\Facades\\[a-zA-Z]+::[a-zA-Z]+\(\)#'
+        # - '#Access to an undefined property Illuminate\\Database\\Schema\\Blueprint::\$[a-zA-Z]+#'
