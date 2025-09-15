@@ -1,0 +1,29 @@
+main:
+  # Require pull request reviews before merging
+  required_pull_request_reviews:
+    required_approving_review_count: 1
+    dismiss_stale_reviews: true
+    require_code_owner_reviews: true
+
+  # Require status checks to pass before merging
+  required_status_checks:
+    strict: true
+    contexts:
+      - ci/github-actions
+      - test/phpunit
+      - code-quality/phpstan
+      - code-quality/pint
+
+  # Enforce linear history
+  required_linear_history: true
+
+  # Enforce admin restrictions
+  enforce_admins: true
+
+  # Restrict who can push to the branch
+  restrictions:
+    users:
+      - quangquoc666
+
+  # Require signed commits
+  required_signatures: true

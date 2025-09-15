@@ -1,0 +1,15 @@
+# Default owners for the entire project
+* @quangquoc666
+
+# Specific file/directory owners
+/app/ @quangquoc666
+/config/ @quangquoc666
+/database/ @quangquoc666
+/routes/ @quangquoc666
+/tests/ @quangquoc666
+
+# Critical configuration files
+Dockerfile @quangquoc666
+docker-compose.yml @quangquoc666
+composer.json @quangquoc666
+.github/workflows/ @quangquoc666
