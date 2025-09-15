@@ -26,10 +26,10 @@ A production-ready, PSR-12 compliant Laravel 12 skeleton with modern development
 ### Installation
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/laravel-psr12-barebone.git
+git clone https://github.com/quangquoc666/gj-laravel-psr12-barebone.git
 
 # Navigate to project directory
-cd laravel-psr12-barebone
+cd gj-laravel-psr12-barebone
 
 # Start Docker containers
 docker-compose up -d
@@ -77,8 +77,8 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 ## 📧 Contact
 
-- Project Link: [https://github.com/yourusername/laravel-psr12-barebone](https://github.com/yourusername/laravel-psr12-barebone)
-- Email: contact@example.com
+- Project Link: [https://github.com/quangquoc666/gj-laravel-psr12-barebone](https://github.com/quangquoc666/gj-laravel-psr12-barebone)
+- Email: quangquoc666@gmail.com
 
 ## 🙏 Acknowledgments
 - Laravel Framework
